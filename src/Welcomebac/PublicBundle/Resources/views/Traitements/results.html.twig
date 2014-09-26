@@ -1,0 +1,8 @@
+{{ type }}
+{% if resultats|length %}
+        <ul>
+        {% for result in resultats %}
+                <li>{{ result|raw }}</li>
+        {% endfor %}
+        </ul>
+{% endif %}

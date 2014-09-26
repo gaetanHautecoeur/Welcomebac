@@ -1,0 +1,7 @@
+parameters:
+#    welcomebac_entites.example.class: Welcomebac\EntitesBundle\Example
+
+services:
+#    welcomebac_entites.example:
+#        class: %welcomebac_entites.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#">
+    <head>
+    	<title>{% block headTitle %}Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}</title>
+    
+		<meta name="keywords" content="annale fiche cours bac gratuit S ES L annales fiches baccalauréat cours particulier domicile">
+		<meta name="description" content="WelcomeBac est un site entièrement gratuit qui vous offre plus de 500 sujets et corrigés de Bac, de nombreuses fiches de cours, des cours particuliers, toutes matières et sections confondues...">
+		
+		<meta property='og:image' content='http://www.welcomebac.com{{ asset('images/icone_fb_welcomebac.png') }}' />
+		<meta property='og:url' content='http://www.welcomebac.com{{ app.getRequest.getRequestUri }}' />
+		<meta property='og:site_name' content='WelcomeBac' />
+		<meta property='og:type' content='website' />
+		<meta property='fb:admins' content='1014760722' />
+		<meta property='fb:app_id' content='196743597052077' />
+		<meta content="Découvrez toutes les annales corrigées des années précédentes et profitez de nombreuses fiches de cours synthétiques sur Welcomebac ! En plus, c'est gratuit !" property='og:description' />
+		{% block metas %}
+		{% endblock %}
+		
+		<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ 	asset('images/favicon.ico') }}">
+		<link href="{{ asset('css/standard.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/publicite.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/header.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/menu.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/left.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/footer.css') }}" rel="stylesheet" type="text/css" >
+		<link href="{{ asset('css/contributeur.css') }}" rel="stylesheet" type="text/css" >
+		{# <link href="{{ asset('css/quiz.css') }}" rel="stylesheet" type="text/css" > #}
+		<link href="{{ asset('css/liste.css') }}" rel="stylesheet" type="text/css" >
+		{# <link href="{{ asset('css/widgets.css') }}" rel="stylesheet" type="text/css" > #}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://datatables.net/release-datatables/media/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="{{ asset('js/facebook.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/menu.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/statistiques.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('lib/thickbox/thickbox.js') }}"></script>
+		<link href="{{ asset('lib/thickbox/thickbox.css') }}" rel="stylesheet" type="text/css" >
+ 		
+		<!-- G plus -->
+		<script type="text/javascript">
+		  window.___gcfg = {lang: 'fr'};
+
+		  (function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		  var facebookConnect_href 		= '{{ path("WelcomebacPublicBundle_facebookConnect") }}';
+		  var facebookDeconnect_href 	= '{{ path("WelcomebacPublicBundle_facebookDeconnect") }}';
+		  var statistiques_href			= "{{ path("WelcomebacStatistiquesBundle_ajouterAjax") }}";
+		</script>
+		<!-- G plus -->
+		
+	</head>
+    <body>
+		<!-- Facebook -->
+		{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();', 'status': true}) }}
+		{#
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=196743597052077";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		
+		  FB.init({
+			appId  : '196743597052077',
+			status : true, // check login status
+			cookie : true, // enable cookies to allow the server to access the session
+			xfbml  : true  // parse XFBML
+		  });
+			alert(FB.appId);
+		</script>
+		#}
+		<!-- Facebook -->
+		<div id="corps">
+			<div id="header">
+				<a href="{{ path('WelcomebacPublicBundle_welcome') }}" title="Welcomebac - Accueil" id="logo">
+					<img src="{{ asset('images/welcomebac.png') }}" alt="Welcomebac">
+				</a>
+				<div id="header_network">
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fsujet.corrige.fiche.bac.gratuit&amp;width=242&amp;height=62&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=false&amp;appId=277476138994312" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:242px; height:62px;" allowTransparency="true"></iframe>
+				</div>
+			</div>
+			<div id="menu">
+				<a href="{{ path('WelcomebacPublicBundle_annalesToutes') }}" title="Toutes les annales et corrigés pour bien réviser !" id="menu-lien-annales" class="lien-menu" onClick="return false;">
+					<img src="{{ asset('images/menu_annales.png') }}" alt="Annales">
+				</a>
+				<a href="{{ path('WelcomebacPublicBundle_fichesToutes') }}" title="Toutes les fiches pour bien réviser !" id="menu-lien-fiches" class="lien-menu" onClick="return false;">
+					<img src="{{ asset('images/menu_fiches.png') }}" alt="Fiches">
+				</a>
+				<a href="{{ path('WelcomebacPriveeBundle_favoris') }}" title="Tous tes favoris pour mieux réviser ton Bac" id="lien-favoris" class="{{ (app.session.get('utilisateur'))?'':'hidden' }}">
+					<img src="{{ asset('images/menu_favoris.png') }}" alt="Favoris"/>
+				</a>
+			{#
+				<a href="{{ path('WelcomebacPublicBundle_cours') }}" title="Pour bien réviser ton Bac, fais-toi accompagner par nos profs !">
+					<img src="{{ asset('images/menu_cours_particuliers.png') }}" alt="Cours Particuliers">
+				</a>
+				<a href="{{ path('WelcomebacPublicBundle_outils') }}" title="Tous les outils pour bien préparer ton Bac !">
+					<img src="{{ asset('images/menu_outils.png') }}" alt="Outils">
+				</a>
+			#}
+			</div>
+			<div id="submenu">
+				<div id="submenu-series" class="submenu">
+					<div class="submenu-serie" id="submenu-lien-s">
+						<a href="#" class="submenu-lien-serie">
+							<img src="{{ asset('images/serie_s.png') }}" alt="S&eacute;rie Scientifique" />
+						</a>
+						<a href="#">
+							S&eacute;rie Scientifique
+						</a>
+					</div>
+					<div class="submenu-serie" id="submenu-lien-es" >
+						<a href="#" class="submenu-lien-serie">
+							<img src="{{ asset('images/serie_e.png') }}" alt="S&eacute;rie Economique et Sociale" />
+						</a>
+						<a href="#">
+							S&eacute;rie Economique et Sociale
+						</a>
+					</div>
+					<div class="submenu-serie" id="submenu-lien-l" >
+						<a href="#" class="submenu-lien-serie">
+							<img src="{{ asset('images/serie_l.png') }}" alt="S&eacute;rie Littéraire" />
+						</a> 
+						<a href="#">
+							S&eacute;rie Litt&eacute;raire
+						</a>
+					</div>
+					<hr class="spacer">
+				</div>
+				<div id="submenu-serieS-annales" class="submenu">
+					{% render "WelcomebacPublicBundle:Annales:menu" with { 'serie':'S' } %}
+					<div class="retour-submenu-serie-annale">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+				<div id="submenu-serieL-annales" class="submenu">
+					{% render "WelcomebacPublicBundle:Annales:menu" with { 'serie':'L' } %}
+					<div class="retour-submenu-serie-annale">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+				<div id="submenu-serieES-annales" class="submenu">
+					{% render "WelcomebacPublicBundle:Annales:menu" with { 'serie':'ES' } %}
+					<div class="retour-submenu-serie-annale">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+				<div id="submenu-serieS-fiches" class="submenu">
+					{% render "WelcomebacPublicBundle:Fiches:menu" with { 'serie':'S' } %}
+					<div class="retour-submenu-serie-fiche">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+				<div id="submenu-serieL-fiches" class="submenu">
+					{% render "WelcomebacPublicBundle:Fiches:menu" with { 'serie':'L' } %}
+					<div class="retour-submenu-serie-fiche">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+				<div id="submenu-serieES-fiches" class="submenu">
+					{% render "WelcomebacPublicBundle:Fiches:menu" with { 'serie':'ES' } %}
+					<div class="retour-submenu-serie-fiche">Vous &ecirc;tes actuellement dans la S&eacute;rie <span class="serie-en-cours"></span> - <a href="#">Choix de la s&eacute;rie</a></div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				var serie = '{{(app.session.get('serie'))?app.session.get('serie'):false}}';
+			</script>
+			<div id="content">
+				<div id="left">
+					{% block leftcontent %}
+					{% endblock %}
+					<script type="text/javascript"><!--
+						google_ad_client = "ca-pub-1179158832953077";
+						/* Welcomebac sidebar */
+						google_ad_slot = "5463244686";
+						google_ad_width = 300;
+						google_ad_height = 250;
+						//-->
+					</script>
+					<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+				</div>
+				<div id="element">
+					<div class="networks">
+						{% block network1 %}
+							{% include "WelcomebacPublicBundle::network.html.twig" %}
+						{% endblock %}	
+					</div>	
+					{% block centercontent %}	
+					{% endblock %}		
+					<div class="networks">
+						{% block network2 %}
+							{% include "WelcomebacPublicBundle::network.html.twig" %}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				{% block footer %}
+				<p>
+					Welcomebac est une marque déposée de notre société &copy; 2012 - <a href="{{ path('WelcomebacPublicBundle_conditions_generales') }}">Conditions Générales d'Utilisation</a> - <a href="{{ path('WelcomebacPublicBundle_monCompte') }}">Mon compte utilisateur</a> - <a href="{{ path('WelcomebacPublicBundle_partenaires') }}">Partenaires</a>
+				</p>
+				{% endblock %}
+			</div>
+		</div>
+		<script type="text/javascript">
+		  var uvOptions = {};
+		  (function() {
+			var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+			uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/USoTRoHsBNAPOo38dwiEbA.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+		  })();
+		</script>
+		{% include "GoogleBundle:Analytics:async.html.twig" %}
+		{% block endbody %}
+		{% endblock %}
+	</body>
+</html>

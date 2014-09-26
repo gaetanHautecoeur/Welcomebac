@@ -1,0 +1,26 @@
+﻿.box a.diplomeo_pub_link
+{
+	display					:block;
+	width					:145px;
+	height					:25px;
+	line-height				:25px;
+	background				:#ff8400;
+	border					:1px solid #ff8400;
+	padding					:3px 7px;
+	margin					:5px auto 10px;
+	text-align				:center;
+	color					:#fff;
+}
+
+.box a.diplomeo_pub_link:hover
+{
+	background				:#fff;
+	color					:#ff8400;
+	text-decoration			:none;
+}
+
+img.partenaire_img
+{
+	float					:left;
+	margin					:0px 8px 10px;
+}

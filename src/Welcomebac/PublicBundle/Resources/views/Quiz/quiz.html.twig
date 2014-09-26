@@ -1,0 +1,50 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block leftcontent %}
+	<div class="box">
+		<span class="titre">Quiz</span>
+		<span class="matiere">{{ fiche.titre }}</span>
+		<span class="score"><span class="nb_points">0</span> points sur {{ nb }}</span>
+		<span class="consultation">Ce quiz a été joué : {{ fiche.getQuizVisites }} fois.</span>
+		<a class="pdf" href="{{ path('WelcomebacPublicBundle_quiz',{'serie':fiche.matiere.serie, 'matiere':fiche.matiere.nom, 'nb':10, 'id':fiche.getId, '_format':'pdf'}) }}">Télécharger ce quiz en .pdf</a>
+	</div>
+	<div class="box">
+		<span class="titre">Fiche</span>
+		<span class="matiere">{{ fiche.matiere.nom}}</span>
+		<span class="description">Un doute sur une question ? Besoin d'un petit coup de pouce ? Prenez le temps de relire la fiche associée !</span>
+		<a class="fiche" href="{{ path('WelcomebacPublicBundle_fiche', {"serie":fiche.matiere.serie, "matiere":"TODO", "id":fiche.getId} ) }}">Accéder à la fiche associée</a>
+	</div>
+	<div class="box">
+		<span class="titre">Annales</span>
+		<span class="matiere">{{ fiche.matiere.nom }}</span>
+		<span class="description">Vous souhaitez vous entraîner pour le Bac ? Testez vos connaissances sur cette thématique en travaillant sur ces annales :</span>
+		<ul>
+		{% for annale in fiche.getAnnalesRecommandees %}
+			<li><a class="annale" href="{{ path('WelcomebacPublicBundle_annale', {"serie":annale.matiere.serie, "matiere":annale.matiere.nom, "lieu":annale.lieu, "annee":annale.date } ) }}">{{ annale.lieu }} {{ annale.date }}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+
+{% block centercontent %}	
+	<h1>Quiz thématique :</h1>
+	<h1>{{ fiche.titre }}</h1>
+	<form action="quiz_reponse.html" method="POST">
+	{% for question in fiche.getQuestions %}
+		<div>
+			<span class="legend">{{ question.description }}</span>	
+		{% for reponse in question.getReponses %}
+			<div class="reponse">
+				<input type="radio" value="1" name="{{ reponse.correcte }}" id="rep_1"/>
+				<label for="rep_1">{{ reponse.description }}</label>
+			</div>
+		{% endfor %}
+			<div class="solution">
+				<span class="resultat">Faux</span>
+				<div class="justification">{{ question.informations }}</div>
+				<a href="#" class="suivante">Suivante</a>
+			</div>
+		</div><br/>
+	{% endfor %}	
+	</form>
+{% endblock %}

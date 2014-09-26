@@ -1,0 +1,49 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block centercontent %}
+<p>Nous vous l'avions promis et c'est chose faite ! Une nouvelle version de <b>Welcomebac</b> est maintenant en ligne et vous propose plus de contenus, plus de services
+pour toujours mieux réviser votre Bac. Et comme les bonnes choses ne doivent pas se perdre, Welcomebac est toujours un service <b>gratuit</b> !</p>
+<p>Vous pouvez désormais <b>consulter les annales et les fiches directement en ligne</b>, grâce à notre visionneuse de documents. Vous pouvez également sans difficulté 
+<b>partager les contenus</b> les plus intéressants à l'ensemble de vos réseaux ! Et de nombreuses autres fonctionnalités sont dans les cartons alors n'hésitez pas à 
+devenir Fan de <a href="http://www.facebook.com/pages/Welcomebac/110156005724161" title="Devenez Fan !">notre page Facebook</a> et soyez les premiers à le savoir !</p>
+
+<div class="conteneur_lesplusvus">
+	<div class="lesplusvus">
+		<h2>Les annales les plus consultées</h2>
+		<p>Voici les cinq annales les plus consultées de Welcomebac</p>
+		 
+		<ul>
+		{% for annale in annales %}
+			<li>
+				<a href="{{ path('WelcomebacPublicBundle_annale', {"serie":annale.matiere.serie, "matiere":annale.matiere.url, "lieu":annale.lieuUrl, "annee":annale.date} ) }}">Annales {{ annale.lieu }} {{ annale.date }}
+				<br/><span class="lesplusvus_soustitre">{{ annale.matiere.nom }} S&eacute;rie {{ annale.matiere.serie }}, vu {{ annale.nombreVisites }} fois</span></a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="lesplusvus">
+		<h2>Les fiches les plus consultées</h2>
+		<p>Voici les cinq fiches les plus consultées de Welcomebac</p>
+		  
+		<ul>
+		{% for fiche in fiches %}
+			<li>
+				<a href="{{ path('WelcomebacPublicBundle_fiche', {"serie":fiche.matiere.serie, "matiere":fiche.matiere.url, "titre":fiche.url} ) }}">{{ fiche.titre }}
+				<br/><span class="lesplusvus_soustitre">{{ fiche.matiere.nom }} S&eacute;rie {{ fiche.matiere.serie }}, vu {{ fiche.nombreVisites }} fois</span></a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+<h1>Tout pour réviser votre Bac !</h1>
+<h2>De nombreuses annales et corrigés pour s'exercer</h2>
+<p>Welcomebac propose plus de <b>800 sujets de Bac et corrigés</b>, pour toutes les séries générales : <b>S</b>, <b>ES</b> & <b>L</b>, dans de nombreuses matières : <a href="{{ path("WelcomebacPublicBundle_annalesToutes") }}">Histoire-Géographie</a>,
+<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matieres['PC'].serie, 'matiere':matieres['PC'].url})}}">{{ matieres['PC'].nom}}</a>, <a href="{{ path("WelcomebacPublicBundle_annalesToutes") }}">Philosophie</a>, <a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matieres['Lit'].serie, 'matiere':matieres['Lit'].url})}}">{{ matieres['Lit'].nom}}</a>, <a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matieres['SES'].serie, 'matiere':matieres['SES'].url})}}">Sciences Economiques et Sociales</a>,...</p>
+<p>Ces sujets et corrigés vont être progressivement remasterisés pour vous offrir une plus grande lisibilité des contenus. Exercez-vous, entraînez-vous et 
+vous arriverez au Bac dans de parfaites conditions. Objectif : la mention !</p>
+
+<h2>Des fiches de cours synthétiques pour bien réviser</h2>
+<p>Parce que pour s'exercer sur des annales, il faut avant tout savoir de quoi l'on parle, nous avons souhaité intégrer des <b>fiches de cours</b>. Welcomebac vous
+offre donc un <b>accès illimité et gratuit</b> à de nombreuses fiches d'<a href="{{ path("WelcomebacPublicBundle_fichesToutes") }}">Histoire-Géographie</a>, de <a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matieres['PC'].serie, 'matiere':matieres['PC'].url})}}">{{ matieres['PC'].nom }}</a> et de bien d'autres matières dans les prochaines semaines !</p>
+<p><b>Bonnes révisions à tous !</b></p>
+{% endblock %}

@@ -1,0 +1,150 @@
+#left
+{
+	width				:300px;
+	height				:100%;
+	float				:left;
+	margin				:0px;
+	padding				:0px;
+}
+
+.box
+{
+	float					:left;
+	width					:100%;
+	border					:1px solid #ff8400;
+	-moz-border-radius		:3px;
+	margin					:0px 0px 10px 0px;
+	font-size				:13px;
+}
+
+.box .titre, .box .titre
+{
+	display					:block;
+	float					:left;
+	width					:80px;
+	height					:30px;
+	background				:#ff8400;
+	border					:none;
+	margin					:-1px 0px 0px -1px;
+	cursor					:pointer;
+	line-height				:30px;
+	text-align				:center;
+	color					:#ffffff;
+	font-size				:15px;
+	font-weight				:bold;
+	-moz-border-radius		:3px;
+        padding: 2px;
+}
+
+.box .matiere
+{
+	display					:block;
+	line-height				:30px;
+	text-align				:center;
+	font-size				:15px;
+	font-weight				:bold;
+        color: #606060;
+        text-decoration: none;
+        padding: 0;
+}
+
+.box span.description 
+{
+	display					:block;
+	line-height				:16px;
+	padding					:5px 10px;
+	font-style				:italic;
+}
+
+.box span.description .titre_description
+{
+	color					:#ff8400;
+}
+
+.box span.consultation
+{
+	display					:block;
+	line-height				:16px;
+	padding					:5px 10px;
+	text-align				:justify;
+}
+.box .note{
+        font-weight: bold;
+        color: #ff8400;
+        font-size: 1.5em;
+}
+.box span.consultation.notation
+{
+	cursor: pointer;
+}
+.box span.description a, .box .titre a{
+    display: inline;
+    color: inherit;
+    padding: 0;
+    font-weight: inherit;
+}
+.box a
+{
+	display					:block;
+	line-height				:16px;
+	padding					:5px 10px;
+	color					:#ff8400;
+	font-weight				:bold;
+}
+
+.box a:hover
+{
+	text-decoration			:underline;
+}
+
+.box a.pdf
+{
+	text-indent				:25px;
+	background				:url("../images/pdf.png") no-repeat 10px center;
+}
+
+.box a.check
+{
+	text-indent				:25px;
+	background				:url("../images/check.png") no-repeat 10px center;
+}
+
+.box a.fiche
+{
+	text-indent				:25px;
+	background				:url("../images/fiche.png") no-repeat 10px center;
+}
+
+.box span.score
+{
+	display					:block;
+	padding					:8px 10px 5px;
+	line-height				:40px;
+	font-size				:20px;
+	text-align				:center;
+}
+
+.box span.nb_points
+{
+	line-height				:40px;
+	font-size				:30px;
+	color					:#ff8400;
+}
+
+.box ul
+{
+	margin					:0px 0px 0px 30px;
+	padding					:0px;
+	color					:#ff8400;
+}
+
+.box ul li
+{
+	margin					:0px;
+	padding					:0px;
+}
+
+.box ul li a
+{
+	padding					:0px 10px 5px;
+}

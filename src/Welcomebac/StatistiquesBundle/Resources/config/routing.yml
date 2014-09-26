@@ -1,0 +1,18 @@
+WelcomebacStatistiquesBundle_ajouterAjax:
+    pattern:  /statistiqueAjax
+    defaults: { _controller: WelcomebacStatistiquesBundle:Statistique:ajouterAjax }
+
+WelcomebacStatistiquesBundle_ajouterHtml:
+    pattern:  /statistiqueHtml
+    defaults: { _controller: WelcomebacStatistiquesBundle:Statistique:ajouterHtml }
+    
+    
+WelcomebacStatistiquesBundle_majAssociations:
+    pattern:  /statistiques/associationMiseajour/{type}
+    defaults: { _controller: WelcomebacStatistiquesBundle:Traitements:associationMiseajour }
+    
+WelcomebacStatistiquesBundle_faussesNotations:
+    pattern:  /statistiques/notations/{type}
+    defaults: { _controller: WelcomebacStatistiquesBundle:Traitements:faussesNotations }
+    
+    

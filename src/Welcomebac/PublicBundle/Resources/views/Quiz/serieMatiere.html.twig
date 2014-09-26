@@ -1,0 +1,13 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block leftcontent %}
+Serie : {{ matiere.serie }}<br/>
+Matiere : {{ matiere.nom }}
+{% endblock %}
+
+
+{% block centercontent %}
+	{% for fiche in matiere.getFiches %}
+		<a href="{{ path('WelcomebacPublicBundle_quiz', {'serie':fiche.matiere.serie, 'matiere':fiche.matiere.nom, 'id':fiche.getId, 'nb':10} ) }}">{{ fiche.titre }}</a><br/>
+    {% endfor %}	
+{% endblock %}

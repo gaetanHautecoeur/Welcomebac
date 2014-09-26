@@ -1,0 +1,145 @@
+WelcomebacPublicBundle_welcome:
+    pattern:  /
+    defaults: { _controller: WelcomebacPublicBundle:Accueil:index }
+
+# Anciennes URL catchees
+welcomebacv1_public_annales:
+    resource: "@WelcomebacPublicBundle/Resources/config/routingv1_annales.yml"
+
+welcomebacv1_public_fiches:
+    resource: "@WelcomebacPublicBundle/Resources/config/routingv1_fiches.yml"
+
+# Routines
+
+# insertion des stats fichiers dans la bdd (v3.3)
+WelcomebacPublicBundle_old_stats:
+    pattern:  /old_stats/{type}
+    defaults: { _controller: WelcomebacPublicBundle:Traitements:stats }
+
+# Annales et corriges
+WelcomebacPublicBundle_annalesToutes:
+    pattern:  /toutes-les-annales-sur-welcomebac
+    defaults: { _controller: WelcomebacPublicBundle:Annales:toutes }
+WelcomebacPublicBundle_annalesSerieMatiereAnnee:
+    pattern:  /{serie}/annales/{matiere}/{annee}
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serieMatiereAnnee }
+WelcomebacPublicBundle_annalesSerieMatiere:
+    pattern:  /{serie}/annales/{matiere}
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serieMatiere }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_annale:
+    pattern:  /annale-de-{matiere}-serie-{serie}-{lieu}-annee-{annee}
+    defaults: { _controller: WelcomebacPublicBundle:Annales:annale }
+    requirements:
+        annee: "[0-9]{4}"
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        lieu: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_annalePdf_old:
+    pattern:  /annales/{lieuMatiereSerieAnnee}.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Annales:annalePdf_old, _format: pdf }
+WelcomebacPublicBundle_annalePdf:
+    pattern:  /Sujet-{matiere}-Serie-{serie}-{lieu}-{annee}-Welcomebac.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Annales:annalePdf}
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        lieu: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_corrige:
+    pattern:  /corrige-de-l-annale-de-{matiere}-serie-{serie}-{lieu}-annee-{annee}
+    defaults: { _controller: WelcomebacPublicBundle:Annales:corrige }
+    requirements:
+        annee: "[0-9]{4}"
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        lieu: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_corrigePdf_old:
+    pattern:  /corrige/{lieuMatiereSerieAnnee}C.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Annales:corrigePdf_old}
+    requirements:
+        lieuMatiereSerieAnnee: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_corrigePdf:
+    pattern:  /Corrige-{matiere}-Serie-{serie}-{lieu}-{annee}-Welcomebac.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Annales:corrigePdf}
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        lieu: "[a-zA-Z0-9-+_\/]+"	
+
+
+# Fiches
+WelcomebacPublicBundle_fichesToutes:
+    pattern:  /toutes-les-fiches-sur-welcomebac
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:toutes }
+WelcomebacPublicBundle_fichesSerieMatiere:
+    pattern:  /{serie}/fiches/{matiere}
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:serieMatiere }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_fiche:
+    pattern:  /fiche-{matiere}-serie-{serie}-{titre}
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:fiche }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        titre: "[a-zA-Z0-9-+_\/]+"	
+WelcomebacPublicBundle_fichePdf_old:
+    pattern:  /Cours/{id}.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:fichePdf_old, _format: pdf }
+WelcomebacPublicBundle_fichePdf:
+    pattern:  /{titre}-en-{matiere}-serie-{serie}.pdf
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:fichePdf}
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+        titre: "[a-zA-Z0-9-+_\/]+"	
+
+# Page generales
+WelcomebacPublicBundle_conditions_generales:
+    pattern:  /conditions-generales
+    defaults: { _controller: WelcomebacPublicBundle:Accueil:conditionsGenerales }
+WelcomebacPublicBundle_partenaires:
+    pattern:  /partenaires
+    defaults: { _controller: WelcomebacPublicBundle:Accueil:partenaires }
+WelcomebacPublicBundle_monCompte:
+    pattern:  /mon-compte
+    defaults: { _controller: WelcomebacPublicBundle:Accueil:monCompte }
+WelcomebacPublicBundle_ajoutRessource:
+    pattern:  /ajouter-ma-ressource
+    defaults: { _controller: WelcomebacPublicBundle:Accueil:ajoutRessource }
+WelcomebacPublicBundle_siteMap:
+    pattern:  /sitemap.xml
+    defaults: { _controller: WelcomebacPublicBundle:Traitements:siteMap }
+
+# Facebook a changer de fichier
+WelcomebacPublicBundle_facebookConnect:
+    pattern:  /facebookConnect
+    defaults: { _controller: FOSFacebookBundle:Connect:facebookConnect }
+
+WelcomebacPublicBundle_facebookDeconnect:
+    pattern:  /facebookDeconnect
+    defaults: { _controller: FOSFacebookBundle:Connect:facebookDeconnect }
+
+# Prochaines versions
+WelcomebacPublicBundle_fluxrss:
+    pattern:  /RSS
+    defaults: { _controller: WelcomebacPublicBundle:FluxRSS:index }
+
+WelcomebacPublicBundle_cours:
+    pattern:  /cours
+    defaults: { _controller: WelcomebacPublicBundle:Cours:index }
+
+WelcomebacPublicBundle_quizs:
+    pattern:  /quiz
+    defaults: { _controller: WelcomebacPublicBundle:Quiz:all }
+WelcomebacPublicBundle_quizSerieMatiere:
+    pattern:  /{serie}/quiz/{matiere}
+    defaults: { _controller: WelcomebacPublicBundle:Quiz:serieMatiere }
+
+WelcomebacPublicBundle_quiz:
+    pattern:  /quiz-de-{matiere}-serie-{serie}-avec-{nb}-questions/{id}
+    defaults: { _controller: WelcomebacPublicBundle:Quiz:quiz }
+
+
+WelcomebacPublicBundle_outils:
+    pattern:  /outils
+    defaults: { _controller: WelcomebacPublicBundle:Outils:all }
+WelcomebacPublicBundle_partager:
+    pattern:  /partager
+    defaults: { _controller: WelcomebacPublicBundle:Partager:index }
+

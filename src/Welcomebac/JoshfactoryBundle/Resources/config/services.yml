@@ -1,0 +1,8 @@
+parameters:
+#    welcomebac_joshfactory.example.class: Welcomebac\StatistiquesBundle\Example
+
+services:
+#    order.postUpdate :
+#        class: Welcomebac\JoshfactoryBundle\EventListener\ControllerListener
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.controller }

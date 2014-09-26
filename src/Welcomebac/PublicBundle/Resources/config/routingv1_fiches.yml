@@ -1,0 +1,11 @@
+Welcomebacv1_sommairefiches:
+    pattern:  /sommairefiches.php 
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:toutes }
+
+Welcomebacv1_fichesHGS:
+    pattern:  /FichesHGS.php 
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:serieMatiere , serie: S, matiere: 'Histoire-Geographie' }
+
+Welcomebacv1_fichesPCST:
+    pattern:  /FichesPCST.php 
+    defaults: { _controller: WelcomebacPublicBundle:Fiches:serieMatiere , serie: S, matiere: 'Physique-Chimie' }

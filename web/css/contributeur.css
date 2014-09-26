@@ -1,0 +1,67 @@
+.box a.contribuer
+{
+	display					:block;
+	width					:180px;
+	height					:25px;
+	line-height				:25px;
+	background				:#ff8400;
+	border					:1px solid #ff8400;
+	padding					:3px 7px;
+	margin					:5px auto 10px;
+	text-align				:center;
+	color					:#fff;
+}
+
+.box a.contribuer:hover
+{
+	background				:#fff;
+	color					:#ff8400;
+	text-decoration			:none;
+}
+
+form.form_contributeur
+{
+	padding					:0px 20px;
+}
+
+form.form_contributeur legend
+{
+	display					:block;
+	width					:450px;
+	font-family				:Cambria;
+	font-size				:16px;
+	font-weight				:bold;
+	color					:#ff8400;
+	margin					:10px 0px;
+}
+
+form.form_contributeur label
+{
+	display					:inline-block;
+	width					:100px;
+	text-align				:right;
+	margin					:0px 10px 0px 0px;
+	line-height				:30px;
+}
+
+form.form_contributeur input[type=text], form.form_contributeur input[type=file]
+{
+	width					:200px;
+	padding					:4px;
+}
+
+form.form_contributeur .error{
+	border: 1px solid #D63301;
+	color: #D8000C;
+	background-color: #FFBABA;
+}
+
+form.form_contributeur input[type=text]:focus
+{
+	border-color			:#ff8400;
+}
+
+form.form_contributeur input[type=submit]
+{
+	margin					:10px 0px 0px 110px;
+}

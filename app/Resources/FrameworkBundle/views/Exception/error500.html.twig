@@ -1,0 +1,16 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Erreur 404 - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block centercontent %}
+	
+	<img src="{{ asset('images/500.png') }}" alt="Erreur 500" />
+{% endblock %}
+
+
+{% block endbody %}
+	
+	<script type="text/javascript">
+		_gaq.push(['_setCustomVar', 1, '500', window.location.href,3]);
+	</script>
+{% endblock %}

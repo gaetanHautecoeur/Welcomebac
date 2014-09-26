@@ -1,0 +1,18 @@
+facebook:
+    resource: "@FOSFacebookBundle/Resources/config/routing.yml"
+
+welcomebac_public:
+    resource: "@WelcomebacPublicBundle/Resources/config/routing.yml"
+
+welcomebac_privee:
+    resource: "@WelcomebacPriveeBundle/Resources/config/routing.yml"
+
+welcomebac_stats:
+    resource: "@WelcomebacStatistiquesBundle/Resources/config/routing.yml"
+
+welcomebac_joshfactory:
+    resource: "@WelcomebacJoshfactoryBundle/Resources/config/routing.yml"
+
+_internal:
+    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+    prefix:   /_internal

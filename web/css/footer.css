@@ -1,0 +1,22 @@
+#footer 
+{
+	clear				:both;
+	height				:35px;
+	padding				:0px;
+	font-size			:11px;
+}
+
+#footer p
+{
+	background			:url("../images/footer_welcomebac.png") no-repeat 23px center #606060;
+	margin				:0px;
+	padding				:0px 20px 0px 80px;
+	line-height			:35px;
+	color				:#ffffff;
+}
+
+#footer a 
+{
+	color				:#ffffff;
+	font-weight			:normal;
+}

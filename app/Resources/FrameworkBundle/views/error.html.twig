@@ -1,0 +1,37 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Erreur 404 - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block centercontent %}
+	
+	<img src="http://www.welcomebac.com/welcomebacv2/web{{ asset('images/404.png') }}" alt="Erreur 404" />
+
+	<h1>Les partenaires de Welcomebac</h1>
+	<p>
+		Retrouvez les partenaires en qui nous avons confiance et qui partagent la même philosophie que nous.
+	</p>
+	<h2>Diplomeo</h2>
+	<p>
+		<a class="diplomeo-pub"  href="http://www.diplomeo.com/?utm_source=affiliation&utm_medium=banner&utm_term=que_faire_apres_le_bac&utm_content=250x250&utm_campaign=1203_welcomebac.com" target="_blank" title="Découvrir Diplomeo !">Diplomeo.com</a> offre aux internautes de l’information claire et objective ainsi que des outils d’orientation faciles à utiliser. 
+		Le choix du domaine d’étude et de l’école a une influence considérable sur la vie des étudiants et leur entrée dans la vie active. 
+	</p>
+	<p>
+		C’est pourquoi, <a class="diplomeo-pub" href="http://www.diplomeo.com/?utm_source=affiliation&utm_medium=banner&utm_term=que_faire_apres_le_bac&utm_content=250x250&utm_campaign=1203_welcomebac.com" target="_blank" title="Découvrir Diplomeo !">Diplomeo.com</a> a pensé son interface pour permettre aux internautes à la recherche d’une formation supérieure de faire
+		le meilleur choix possible en toute connaissance de cause grâce à des outils simples, de l’information claire et précise et la possibilité
+		d’être contactés directement par les établissements qui les intéressent s’ils ont des questions (notamment des écoles de commerce
+		comme BEM Bordeaux Management School, écoles d’ingénieurs telle l’Ecole Supérieure d’Ingénieurs Léonard de Vinci, des BTS, Masters, 
+		Mastères spécialisés, MBA, mais également des écoles spécialisées comme l’EEMI, l’Ecole Européenne des Métiers de l’Internet).
+	</p>
+	<script>
+	$(document).ready(function() {
+		$('.diplomeo-pub').click(function(){
+			$.ajax({
+			   type: "GET",
+			   url: "{{ path("WelcomebacPublicBundle_diplomeo", {'page':app.getRequest().getRequestUri() }) }}",
+			   dataType: "html",
+			   async: false
+			 });
+		});
+	});
+	</script>
+{% endblock %}

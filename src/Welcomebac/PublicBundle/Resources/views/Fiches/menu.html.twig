@@ -1,0 +1,20 @@
+{% for matiere in matieres %}
+	<div class="matiere">
+		<a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}" class="icone_matiere">
+			<img src="{{ asset('images/matieres/' ~ matiere.nomAbrege ~ '.png') }}" alt="{{ matiere.nom }}">
+		</a>
+		<a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}" class="nom_matiere">{{ matiere.nom }}</a>
+		<p class="detail_matiere">
+			{% for cle, fiche in matiere.fiches %}
+				{% if cle < 1 %}
+					<a href="{{ path('WelcomebacPublicBundle_fiche', {"serie":fiche.matiere.serie, "matiere":fiche.matiere.url, "titre":fiche.url} ) }}">{{ fiche.titre }}</a>
+				{% elseif cle < 2%}
+					 - <a href="{{ path('WelcomebacPublicBundle_fiche', {"serie":fiche.matiere.serie, "matiere":fiche.matiere.url, "titre":fiche.url} ) }}">{{ fiche.titre }}</a>
+				{% elseif cle < 3 %}
+					 - <a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}" >Plus...</a>
+				{% endif %}
+			{% endfor %}
+		</p>
+	</div>
+{% endfor %}
+<hr class="spacer"/>

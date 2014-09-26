@@ -1,0 +1,73 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Annales et Corrig&eacute;s {{ matiere.nom }} S&eacute;rie {{ matiere.serie }} - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block leftcontent %}
+	<div class="box">
+		<span class="titre" style="float:none;width:100%;">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_annalesToutes') }}" itemprop="url">
+                            <span  itemprop="title">Annales</span>
+                        </a> - 
+                    </span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url}) }}" itemprop="url">
+                            <span  itemprop="title">S&eacute;rie {{ matiere.serie }} - {{ matiere.nom }}</span>
+                        </a>
+                    </span>
+                </span>
+                <span class="description">
+			Tu retrouveras sur cette page toutes les annales que nous avons trouv&eacute;es <b>pertinentes pour bien r&eacute;viser</b>.
+		</span>
+	</div>
+{% endblock %}
+
+{% block body_attributs %}itemscope itemtype="http://schema.org/WebPage"{% endblock %}
+
+{% block centercontent %}
+		<h1>{{ matiere.nom }} - S&eacute;rie {{ matiere.serie }}</h1>
+		<table id="annales_table">
+		    <thead>
+		        <tr>
+		            <th class="sorting tdlieu">Lieu</th>
+		            <th class="sorting tdannee">Ann&eacute;e</th>
+		            <th class="sorting tdnb">Vu(s)</th>
+		            <th class="sorting tdcorrige">Corrig&eacute;</th>
+		        </tr>
+		    </thead>
+		    <tbody>		        
+				{% for annale in annales %}
+		        <tr>
+		            <td class="tdlieu"><a title="Annales {{ matiere.nom }} - S&eacute;rie {{ matiere.serie }} - {{ annale.lieu }} {{ annale.date }}" href="{{ path('WelcomebacPublicBundle_annale', {"serie":annale.matiere.serie, "matiere":annale.matiere.url, "lieu":annale.lieuUrl, "annee":annale.date} ) }}">{{ annale.lieu }}</a></td>
+		            <td class="tdannee"><a title="Annales {{ matiere.nom }} - S&eacute;rie {{ matiere.serie }} - {{ annale.lieu }} {{ annale.date }}" href="{{ path('WelcomebacPublicBundle_annale', {"serie":annale.matiere.serie, "matiere":annale.matiere.url, "lieu":annale.lieuUrl, "annee":annale.date} ) }}">{{ annale.date }}</a></td>
+		            <td class="tdconsultation">{{ annale.getNombreVisites }}</td>
+					<td class="tdcorrige">
+					{% if annale.corrige %}
+						<a title="Corrigé {{ matiere.nom }} - S&eacute;rie {{ matiere.serie }} - {{ annale.lieu }} {{ annale.date }}" href="{{ path('WelcomebacPublicBundle_corrige',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date, 'lieu':annale.lieuUrl}) }}">Voir le corrig&eacute;...</a>
+					{% endif %}
+					</td>
+		        </tr>
+			    {% endfor %}
+		    </tbody>
+		</table>
+		<script>
+			$(document).ready(function() {
+			    $('#annales_table').dataTable({
+			    	"bPaginate": false,
+        			"bInfo": false,
+        			"oSearch": {"sSearch": "{{ search }}"},
+					"aaSorting": [[ 1, "desc" ]],
+        			"oLanguage": {
+			            "sSearch": "Rechercher dans toutes les annales (par exemple \"Liban 2010\") :",
+						"sZeroRecords": "Nous n'avons pas trouv&eacute; de r&eacute;sultat correspondant &agrave; ta recherche"
+			        },
+					"aoColumns": [ 
+					  { "sType": "html" },
+					  { "sType": "html" , "asSorting": [ "desc", 'asc' ]},
+					  { "sType": "numeric" , "asSorting": [ "desc", 'asc' ]},
+					  { "sType": "html" , "asSorting": [ "desc", 'asc' ]}
+					]
+			    });
+			} );
+		</script>
+{% endblock %}

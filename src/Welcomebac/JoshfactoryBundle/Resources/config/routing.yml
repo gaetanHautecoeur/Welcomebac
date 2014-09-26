@@ -1,0 +1,17 @@
+WelcomebacJoshfactoryBundle_fiches:
+    pattern:  /toutes-les-fiches-serie-{serie}-en-{matiere}.json
+    defaults: { _controller: WelcomebacJoshfactoryBundle:Flux:fiches }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+
+WelcomebacJoshfactoryBundle_annales:
+    pattern:  /toutes-les-annales-serie-{serie}-en-{matiere}.json
+    defaults: { _controller: WelcomebacJoshfactoryBundle:Flux:annales }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"	
+
+WelcomebacJoshfactoryBundle_corriges:
+    pattern:  /tous-les-corriges-serie-{serie}-en-{matiere}.json
+    defaults: { _controller: WelcomebacJoshfactoryBundle:Flux:corriges }
+    requirements:
+        matiere: "[a-zA-Z0-9-+_\/]+"

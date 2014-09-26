@@ -1,0 +1,62 @@
+div#header
+{
+	width				:100%;
+	height				:65px;
+}
+
+a#logo
+{
+	display				:block;
+	float				:left;
+	width				:354px;
+	height				:54px;
+	margin				:5px 0px 6px 0px;
+}
+
+div#header_network
+{
+	float				:right;
+	margin				:2px 0px 0px;
+}
+
+div#header_network a
+{
+	float				:right;
+	height				:40px;
+	width				:40px;
+	overflow			:hidden;
+	margin				:14px 0px 0px 10px;
+	padding				:0px;
+}
+
+div#header_network div
+{
+	float				:right;
+	height				:54px;
+	overflow			:hidden;
+	margin				:14px 0px 0px 10px;
+	padding				:0px;
+}
+
+div#header_network img
+{
+	float				:right;
+	margin				:14px 0px 11px 12px;
+}
+
+div#header_network a.connexion img
+{
+	margin				:0px;
+	padding				:0px;
+}
+
+div#header_network a.connexion:hover img
+{
+	margin				:-40px 0px 0px;
+}
+
+div#header_network div.deconnexion img
+{
+	margin				:-40px 0px 0px;
+	padding				:0px;
+}

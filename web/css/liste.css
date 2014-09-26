@@ -1,0 +1,77 @@
+ul#liste
+{
+	display					:block;
+	margin					:10px;
+	float					:left;
+}
+
+ul#liste li
+{
+	text-indent				:65px;
+	list-style-type			:none;
+	margin					:0px 0px 40px 0px;
+}
+
+ul#liste li h1
+{
+	text-align 				:left;
+}
+
+ul#liste li h1 a
+{
+	display					:block;
+	height					:46px;
+	font-family				:Cambria;
+	font-size				:18px;
+	line-height				:46px;
+	color					:#606060;
+	background-repeat		:no-repeat;
+}
+
+ul#liste li h1 a:hover
+{
+	text-decoration			:none;
+	color					:#ff8400;
+	background-position		:left -46px;
+}
+
+ul#liste li h1 a#serie_s
+{
+	background-image		:url("../images/serie_s.png");
+}
+
+ul#liste li h1 a#serie_es
+{
+	background-image		:url("../images/serie_e.png");
+}
+
+ul#liste li h1 a#serie_l
+{
+	background-image		:url("../images/serie_l.png");
+}
+
+ul#liste li ul, ul#liste li
+{
+	margin					:10px 0px 10px 35px;
+}
+
+ul#liste li ul li
+{
+	text-indent				:0px;
+	margin					:0px;
+}
+
+ul#liste li ul li a
+{
+	text-align				:justify;
+	font-family				:Calibri;
+	font-size				:14px;
+	color					:#606060;
+	line-height				:22px;
+}
+
+ul#liste li ul li a:hover
+{
+	text-decoration			:none;
+	color					:#ff8400;
+}

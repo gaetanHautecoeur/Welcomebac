@@ -1,0 +1,83 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+{% block headTitle %}Ajouter une ressource - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+{% block centercontent %}
+
+<h1>Deviens contributeur !</h1>
+Comme chaque année, nous invitons les internautes à partagez leurs contenus pour enrichir la base d'annales, de corrigés et de fiches disponibles gratuitement sur Welcomebac.
+<br/>Alors si toi aussi, tu souhaites participer à Welcomebac et aider d'autres lycéens à réviser leur Bac avec des contenus de qualités, n'hésite plus !
+	{% if uploaded %}
+		<div>
+			<br/><b>Merci de votre participation</b>
+		</div>
+	{% else %}
+	<form id="form_document" class="form_contributeur" action="#" method="post" {{ form_enctype(form) }}>
+		<legend>Ton identité :</legend>
+		{{ form_row(form.nom) }}
+		{{ form_row(form.prenom) }}
+		{{ form_row(form.email) }}
+		<legend>Ta super contribution :</legend>
+		{{ form_row(form.titre) }}
+		{{ form_row(form.description) }}
+		{{ form_row(form.file) }}
+		{{ form_rest(form) }}
+		<button id="form_submit" type="button">Partager</button>
+	</form>
+	<script>
+		$(document).ready(function() {
+			function validEmailAddress() {
+				if($('#form_email').val() != ''){
+					var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+					if(!pattern.test($('#form_email').val())){
+						$('#form_email').addClass('error');
+						return false
+					}
+				}
+				$('#form_email').removeClass('error');
+				return true;
+			};
+			function validTitreDocument() {
+				if($('#form_titre').val() == ''){
+					$('#form_titre').addClass('error');
+					return false
+				}
+				$('#form_titre').removeClass('error');
+				return true;
+			};
+			function validDescriptionDocument() {
+				if($('#form_description').val() == ''){
+					$('#form_description').addClass('error');
+					return false
+				}
+				$('#form_description').removeClass('error');
+				return true;
+			};
+			function validFileDocument() {
+				if($('#form_file').val() == ''){
+					$('#form_file').addClass('error');
+					return false
+				}
+				$('#form_file').removeClass('error');
+				return true;
+			};
+			$('#form_email').change(function(){
+				validEmailAddress()
+			});
+			$('#form_titre').change(function(){
+				validTitreDocument()
+			});
+			$('#form_description').change(function(){
+				validDescriptionDocument()
+			});
+			$('#form_file').change(function(){
+				validFileDocument()
+			});
+			$('#form_submit').click(function(){
+				var ok = ( validEmailAddress() & validFileDocument() & validTitreDocument() & validDescriptionDocument() );
+				if(ok){
+					$('#form_document').submit();
+				}
+			});
+		});
+	</script>
+	{% endif %}
+{% endblock %}

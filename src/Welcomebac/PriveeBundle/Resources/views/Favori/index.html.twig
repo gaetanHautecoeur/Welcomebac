@@ -1,0 +1,32 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block leftcontent %}
+{% endblock %}
+
+
+{% block centercontent %}
+	{% if annales|length %}
+		<h1>Mes Annales Favorites</h1>
+		{% for annale in annales %}
+			Annale en {{ annale.matiere.nom }} de {{ annale.lieu }} année {{ annale.date }} - <a href="{{ path('WelcomebacPublicBundle_annale',{'serie':annale.getMatiere.serie, 'matiere':annale.getMatiere.getUrl, 'lieu':annale.getLieuUrl, 'annee': annale.getDate }) }}">Accéder</a> - <a href="{{ path('WelcomebacPriveeBundle_supprimerFavoriType', { 'id': annale.id, 'type': 'a' } ) }}">Retirer</a><br/>
+		{% endfor %}
+	{% endif %}
+
+	{% if corriges|length %}
+		<h1>Mes Corrigés Favoris</h1>
+		{% for annale in corriges %}
+			Corrigé de l'annale en {{ annale.matiere.nom }} de {{ annale.lieu }} année {{ annale.date }} - <a href="{{ path('WelcomebacPublicBundle_annale',{'serie':annale.getMatiere.serie, 'matiere':annale.getMatiere.getUrl, 'lieu':annale.getLieuUrl, 'annee': annale.getDate }) }}">Accéder</a> - <a href="{{ path('WelcomebacPriveeBundle_supprimerFavoriType', { 'id': annale.id, 'type': 'c' } ) }}">Retirer</a><br/>
+		{% endfor %}
+	{% endif %}
+
+	{% if fiches|length %}
+		<h1>Mes Fiches Favorites</h1>
+		{% for fiche in fiches %}
+			{{ fiche.titre }} - <a href="{{ path('WelcomebacPublicBundle_fiche',{'serie':fiche.getMatiere.serie, 'matiere':fiche.getMatiere.getUrl, 'titre':fiche.url }) }}">Accéder</a> - <a href="{{ path('WelcomebacPriveeBundle_supprimerFavoriType', { 'id': fiche.id, 'type': 'f' } ) }}">Retirer</a><br/>
+		{% endfor %}
+	{% endif %}
+
+	{% if not fiches|length and not annales|length and not corriges|length %}
+		Vous n'avez aucune ressource dans vos favoris.
+	{% endif %}
+{% endblock %}

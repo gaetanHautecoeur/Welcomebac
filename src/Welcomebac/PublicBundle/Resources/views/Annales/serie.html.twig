@@ -1,0 +1,9 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block centercontent %}
+	<ul>
+		{% for matiere in matieres %}
+		<li><a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.nom})}}">{{ matiere.nom }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

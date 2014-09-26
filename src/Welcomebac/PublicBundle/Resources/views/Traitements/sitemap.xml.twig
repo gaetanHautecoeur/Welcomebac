@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+	{% set last = "2012-04-14" %} 
+	{% set freq = "weekly" %} 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_annalesToutes') }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_fichesToutes') }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_conditions_generales') }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_partenaires') }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	{% for matiere in matieres %}
+		{% if matiere.annales|length %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{ 'matiere': matiere.url, 'serie': matiere.serie }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+			{% for annee in range(2001,"now"|date("Y")) %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{ 'matiere': matiere.url, 'serie': matiere.serie, 'annee': annee }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+			{% endfor %}
+			{% for annale in matiere.annales %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_annale',{ 'matiere': annale.matiere.url, 'serie': annale.matiere.serie, 'lieu': annale.lieuUrl, 'annee': annale.date }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_annalePdf',{ 'matiere': annale.matiere.url, 'serie': annale.matiere.serie, 'lieu': annale.lieuUrl, 'annee': annale.date }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+				{% if annale.corrige %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_corrige',{ 'matiere': annale.matiere.url, 'serie': annale.matiere.serie, 'lieu': annale.lieuUrl, 'annee': annale.date }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_corrigePdf',{ 'matiere': annale.matiere.url, 'serie': annale.matiere.serie, 'lieu': annale.lieuUrl, 'annee': annale.date }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	
+		{% if matiere.fiches|length %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{ 'matiere': matiere.url, 'serie': matiere.serie }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+			{% for fiche in matiere.fiches %}
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_fiche',{ 'matiere': fiche.matiere.url, 'serie': fiche.matiere.serie, 'titre': fiche.url }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+	<url>
+		<loc>{{ 'http://' ~ app.request.host }}{{ path('WelcomebacPublicBundle_fichePdf',{ 'matiere': fiche.matiere.url, 'serie': fiche.matiere.serie, 'titre': fiche.url }) }}</loc>
+		<lastmod>{{ last }}</lastmod>
+		<changefreq>{{ freq }}</changefreq>
+		<priority>0.5</priority>
+	</url> 
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+</urlset>

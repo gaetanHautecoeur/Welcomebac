@@ -1,0 +1,58 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Fiches {{ matiere.nom }} S&eacute;rie {{ matiere.serie }} - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block leftcontent %}
+	<div class="box">
+		<span class="titre" style="float:none;width:100%;">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_fichesToutes') }}" itemprop="url">
+                            <span  itemprop="title">Fiches</span>
+                        </a> - 
+                    </span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url}) }}" itemprop="url">
+                            <span  itemprop="title">S&eacute;rie {{ matiere.serie }} - {{ matiere.nom }}</span>
+                        </a>
+                    </span>
+                </span>
+                <span class="description">
+			Tu retrouveras sur cette page toutes les annales que nous avons trouv&eacute;es <b>pertinentes pour bien r&eacute;viser</b>.
+		</span>
+	</div>
+{% endblock %}
+
+{% block centercontent %}
+		<h1>{{ matiere.nom }} - S&eacute;rie {{ matiere.serie }}</h1>
+		<table id="fiches_table">
+		    <thead>
+		        <tr>
+		            <th class="sorting tdfiche">Titre</th>
+		            <th class="sorting tdnb">Vu(s)</th>
+		        </tr>
+		    </thead>
+		    <tbody>		        
+				{% for fiche in matiere.fiches %}
+		        <tr>
+		            <td class="tdfiche"><a title="Annales {{ matiere.nom }} - S&eacute;rie {{ matiere.serie }} - {{ fiche.titre }}" href="{{ path('WelcomebacPublicBundle_fiche', {"serie":fiche.matiere.serie, "matiere":fiche.matiere.url, "titre":fiche.url} ) }}">{{ fiche.titre }}</a></td>
+		        	<td class="tdconsultation">{{ fiche.nombreVisites }}</td>
+		        </tr>
+			    {% endfor %}
+		    </tbody>
+		</table>
+		<script>
+			$(document).ready(function() {
+			    $('#fiches_table').dataTable({
+			    	"bPaginate": false,
+        			"bInfo": false,
+        			"oLanguage": {
+			            "sSearch": "Rechercher dans toutes les annales (par exemple \"Mod&egrave;le Am&eacute;ricain\") :"
+			        },
+					"aoColumns": [ 
+					  { "sType": "html" },
+					  { "sType": "numeric", "asSorting": [ "desc", 'asc' ] }
+					]
+			    });
+			} );
+		</script>
+{% endblock %}

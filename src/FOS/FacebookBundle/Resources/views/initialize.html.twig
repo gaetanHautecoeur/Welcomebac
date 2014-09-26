@@ -1,0 +1,24 @@
+<div id="fb-root"></div>
+{% if not async %}
+<script type="text/javascript" src="http://connect.facebook.net/{{ culture }}/all.js"></script>
+{% endif %}
+<script type="text/javascript">
+{% autoescape false %}
+{% if async %}
+window.fbAsyncInit = function() {
+{% endif %}
+  FB.init({{ {'appId':appId, 'xfbml':xfbml, 'oauth':oauth, 'status':status, 'cookie':cookie, 'logging':logging }|json_encode }});
+{% if async %}
+  {{ fbAsyncInit }}
+};
+
+(function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "{{ ("//connect.facebook.net/%s/all.js" ~ "#xfbml=1&appId=" ~ appId)|format(culture) }}";
+     ref.parentNode.insertBefore(js, ref);
+}(document));
+{% endif %}
+{% endautoescape %}
+</script>

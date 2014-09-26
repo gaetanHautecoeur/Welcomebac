@@ -1,0 +1,8 @@
+
+facebook_ajaxConnect:
+    pattern:  /facebookConnect
+    defaults: { _controller: FOSFacebookBundle:Connect:facebookConnect }
+
+facebook_ajaxConnect:
+    pattern:  /facebookDeconnect
+    defaults: { _controller: FOSFacebookBundle:Connect:facebookDeconnect }

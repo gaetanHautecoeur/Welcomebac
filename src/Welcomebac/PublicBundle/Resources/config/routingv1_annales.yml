@@ -1,0 +1,74 @@
+Welcomebacv1_sommaireannales:
+    pattern:  /sommaireannales.php 
+    defaults: { _controller: WelcomebacPublicBundle:Annales:toutes }
+    
+Welcomebacv1_annalesSHG:
+    pattern:  /AnnalesHGS.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Histoire-Geographie' }
+     
+Welcomebacv1_annalesSPhilo:
+    pattern:  /AnnalesPS.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Philosophie' }
+    
+Welcomebacv1_annalesSMaths:
+    pattern:  /AnnalesMS.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Mathematiques' }
+
+Welcomebacv1_annalesSMathsSpe:
+    pattern:  /AnnalesMSPES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Mathematiques-Specialite' }
+    
+Welcomebacv1_annalesSPC:
+    pattern:  /AnnalesPCS.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Physique-Chimie' }
+    
+Welcomebacv1_annalesSPCSpe:
+    pattern:  /AnnalesPCSPES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Physique-Chimie-Specialite' }
+    
+Welcomebacv1_annalesSSVT:
+    pattern:  /AnnalesSVTS.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'SVT' }
+    
+Welcomebacv1_annalesSSVTSpe:
+    pattern:  /AnnalesSVTSPES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'SVT-Specialite' }
+    
+Welcomebacv1_annalesSSI:
+    pattern:  /AnnalesSIS.php 
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: S, matiere: 'Sciences-de-l-Ingenieur' }
+
+Welcomebacv1_annalesESHG:
+    pattern:  /AnnalesHGES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: ES, matiere: 'Histoire-Geographie' }
+    
+Welcomebacv1_annalesESPhilo:
+    pattern:  /AnnalesPES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: ES, matiere: 'Philosophie' }
+    
+Welcomebacv1_annalesESMaths:
+    pattern:  /AnnalesMES.php 
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: ES, matiere: 'Mathematiques' }
+    
+Welcomebacv1_annalesESMathsSpe:
+    pattern:  /AnnalesMSPEES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: ES, matiere: 'Mathematiques-Specialite' }
+    
+Welcomebacv1_annalesESSES:
+    pattern:  /AnnalesSESES.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: ES, matiere: 'SES' }
+Welcomebacv1_annalesLGH:
+    pattern:  /AnnalesHGL.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: L, matiere: 'Histoire-Geographie' }
+    
+Welcomebacv1_annalesLPhilo:
+    pattern:  /AnnalesPL.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: L, matiere: 'Philosophie' }
+    
+Welcomebacv1_annalesLLitterature:
+    pattern:  /AnnalesLL.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: L, matiere: 'Litterature' }
+    
+Welcomebacv1_annalesLMathsSpe:
+    pattern:  /AnnalesMSPEL.php
+    defaults: { _controller: WelcomebacPublicBundle:Annales:serie, serie: L, matiere: 'Mathematiques-Specialite' }

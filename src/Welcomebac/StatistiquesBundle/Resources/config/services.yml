@@ -1,0 +1,8 @@
+parameters:
+#    welcomebac_statistiques.example.class: Welcomebac\StatistiquesBundle\Example
+
+services:
+    order.postUpdate :
+        class: Welcomebac\StatistiquesBundle\EventListener\ControllerListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller }

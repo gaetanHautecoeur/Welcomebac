@@ -1,0 +1,49 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block leftcontent %}
+{% endblock %}
+
+{% block centercontent %}
+	<h1>Les Annales sur Welcomebac - Plus de 800 sujets et corrigés du Bac !</h1>
+	<p>
+		Retrouvez l'intégralité des annales des séries scientifiques, économique et sociale, et littéraire sur Welcomebac et profitez de tous ces contenus gratuits !
+	</p>	
+	<ul id="liste">
+		<li>
+			<h1>
+				<a href="#" id="serie_s">
+					S&eacute;rie Scientifique
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresS %}
+				<li><a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>
+			<h1>
+				<a href="#" id="serie_es">
+					S&eacute;rie Economique et Sociale
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresES %}
+				<li><a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>
+			<h1>
+				<a href="#" id="serie_l">
+					S&eacute;rie Litt&eacute;raire
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresL %}
+				<li><a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+{% endblock %}

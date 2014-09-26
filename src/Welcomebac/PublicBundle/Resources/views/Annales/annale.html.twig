@@ -1,0 +1,93 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Annale {{ annale.matiere.nom }} S&eacute;rie {{ annale.matiere.serie }} - {{ annale.lieu }} {{ annale.date }} - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block metas %}
+	<meta content="{{ annale.facebookTitle }} - Welcomebac" property='og:title'>
+{% endblock %}
+        
+{% block body_attributs %}itemscope itemtype="http://schema.org/WebPage"{% endblock %}
+
+{% block network1 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+	<span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	<script>
+		var href_ajouterFavori = "{{ path('WelcomebacPriveeBundle_ajouterAnnaleFavori',{'id':annale.id}) }}";
+		var href_isFavori = "{{ path('WelcomebacPriveeBundle_isAnnaleFavori',{'id':annale.id}) }}"
+	</script>
+	{{ parent() }}
+{% endblock %}
+{% block network2 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" href="" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+	<span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	{{ parent() }}
+{% endblock %}
+
+{% block leftcontent %}
+	<div class="box">
+                <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="titre" href="{{ path('WelcomebacPublicBundle_annalesToutes') }}" itemprop="url">
+                        <span  itemprop="title">Annale</span>
+                    </a>
+		</div>
+                <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="matiere" href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url}) }}" itemprop="url">
+                        <span itemprop="title">S&eacute;rie {{ annale.matiere.serie }} - {{ annale.matiere.nom }}</span>
+                    </a>
+		</div>
+                <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="description">
+                        <span class="titre_description">Description :</span>
+                        <a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date}) }}" itemprop="url">
+                            <span itemprop="title">{{ annale.date }}</span>
+                        </a> - 
+                        {{ annale.lieu }}
+                    </span>
+		</div>
+		<span class="consultation">Ce document a &eacute;t&eacute; consult&eacute; {{ annale.getNombreVisites }} fois.</span>
+		<a class="pdf" href="{{ path('WelcomebacPublicBundle_annalePdf',{'lieu':annale.lieuUrl,'matiere':annale.matiere.url, 'serie':annale.matiere.serie, 'annee':annale.date }) }}">T&eacute;l&eacute;charger cette annale</a>
+		{% if annale.corrige %}
+		<a href="{{ path('WelcomebacPublicBundle_corrige',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date, 'lieu':annale.lieuUrl}) }}">Voir le corrig&eacute;</a>
+		{% endif %}
+	</div>
+	{% render 'WelcomebacPublicBundle:Annales:associations' with {'nb': 3, 'id': annale.id, 'type': 'annale' }, {'standalone': true} %}
+	{% if annale.getFichesRecommandees|length %}
+  {#
+	<div class="box">
+		<span class="titre">Quiz</span>
+		<span class="matiere">{{ annale.matiere.nom }}</span>
+		<span class="description">Pour tout r&eacute;iser sur les probl&egrave;matiques soulev&eacute;s par cette annales</span>
+		<a class="check" href="TODO">Testez vous en 10 questions !</a>
+	</div>
+  #}
+	<div class="box">
+		<span class="titre">Fiches</span>
+		<span class="matiere">{{ annale.matiere.nom }}</span>
+		<span class="description">Vous souhaitez r&eacute;viser cette annale avec nos fiches th&eacute;matiques :</span>
+		{% for fiche in annale.getFichesRecommandees %}
+			<a class="fiche" href="">{{ fiche.titre }}</a></li>
+		{% endfor %}
+	</div>
+	{% endif %}
+{% endblock %}
+
+{% block centercontent %}	
+	<iframe src="http://docs.google.com/viewer?url={{ url('WelcomebacPublicBundle_annalePdf',{'lieu':annale.lieuUrl,'matiere':annale.matiere.url, 'serie':annale.matiere.serie, 'annee':annale.date }) }}&embedded=true" width="670" height="780" style="border: none;"></iframe>
+  {#
+	<h1>COMMENTAIRES</h1>
+	<hr/>
+	{% for commentaire in commentaires %}
+		{% if commentaire.getVisible %}
+			<p>
+				{{ commentaire.date.format('d-m-Y h:i') }}<br/>
+				{{ commentaire.getCommentaire }}
+			</p>
+			<hr/>
+		{% endif %}
+	{% endfor %}
+  #}
+{% endblock %}

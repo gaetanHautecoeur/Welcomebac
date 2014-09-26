@@ -1,0 +1,115 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block headTitle %}Fiche {{ fiche.matiere.nom }} S&eacute;rie {{ fiche.matiere.serie }} - {{ fiche.titre }} - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+ 
+{% block network1 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+	<span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	<script>
+		var href_ajouterFavori = "{{ path('WelcomebacPriveeBundle_ajouterFicheFavori',{'id':fiche.id}) }}";
+		var href_isFavori = "{{ path('WelcomebacPriveeBundle_isFicheFavori',{'id':fiche.id}) }}"
+	</script>
+	{{ parent() }}
+{% endblock %}
+{% block network2 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" href="" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+	<span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	{{ parent() }}
+{% endblock %}
+
+{% block metas %}
+	<meta content="{{ fiche.facebookTitle }} - Welcomebac" property='og:title' />
+{% endblock %}
+        
+{% block body_attributs %}itemscope itemtype="http://schema.org/WebPage"{% endblock %}
+
+{% block leftcontent %}
+	<div class="box" itemscope itemtype="http://www.schema.org/ScholarlyArticle">
+                <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="titre" href="{{ path('WelcomebacPublicBundle_fichesToutes') }}" itemprop="url">
+                        <span  itemprop="title">Fiche</span>
+                    </a>
+		</div>
+                <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="matiere" href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':fiche.matiere.serie, 'matiere':fiche.matiere.url}) }}" itemprop="url">
+                        <span itemprop="title">S&eacute;rie {{ fiche.matiere.serie }} - {{ fiche.matiere.nom }}</span>
+                    </a>
+		</div>
+		<span class="description">{{ fiche.description }}</span>
+		<span class="consultation notation" onclick="$('#popup').bPopup()" >
+                    {% if note > 0 %}
+                    <span itemprop="aggregateRating"itemscope itemtype="http://schema.org/AggregateRating">
+                      Note des utilisateurs : <span class="note" itemprop="ratingValue">{{ note }}</span> / 5 
+                      (<span itemprop="reviewCount">{{ votes }}</span> votes)
+                    </span>
+                    {% else %}
+                    <div>
+                        <span onclick="$('#popup').bPopup()">Soyez le premier &agrave; laisser votre avis</span>
+                    </div>
+                    {% endif %}<br/>
+                    Nombre de consultations : {{ fiche.getNombreVisites }} fois.
+                </span>
+		<a class="pdf" href="{{ path('WelcomebacPublicBundle_fichePdf',{'serie':fiche.matiere.serie, 'matiere':fiche.matiere.url, 'titre':fiche.url }) }}">T&eacute;l&eacute;charger cette fiche en .pdf</a>
+	</div>
+	{% render 'WelcomebacPublicBundle:Annales:associations' with {'nb': 3, 'id': fiche.id, 'type': 'fiche' }, {'standalone': true} %}
+  {#
+	<div class="box">
+		<span class="titre">Quiz</span>
+		<span class="matiere">{{ fiche.matiere.nom }}</span>
+		<span class="description">Pour tout réviser sur le chapitre : {{ fiche.titre }}</span>
+		<a class="check" href="{{ path('WelcomebacPublicBundle_quiz', {"serie":fiche.matiere.serie, "matiere":"TODO", "nb":10, "id":fiche.getId} ) }}">Testez vous en 10 questions !</a>
+	</div>
+  #}
+	{% if fiche.getAnnalesRecommandees|length %}
+	<div class="box">
+		<span class="titre">Annales</span>
+		<span class="matiere">{{ fiche.matiere.nom }}</span>
+		<span class="description">Vous souhaitez vous entraner pour le Bac ? Testez vos connaissances sur cette th&eacute;matique en travaillant sur ces annales :</span>
+		<ul>
+		{% for annale in fiche.getAnnalesRecommandees %}
+			<li><a class="annale" href="{{ path('WelcomebacPublicBundle_annale', {"serie":annale.matiere.serie, "matiere":annale.matiere.nom, "lieu":annale.lieu, "annee":annale.date } ) }}">{{ annale.lieu }} {{ annale.date }}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+                
+        <div id="popup" class="popup">
+            <span class="button bClose"><span>X</span></span>
+            <div class="popin_conteneur">
+                    <div id="popin">
+                            <span class="titre">Note</span>
+                            <span class="matiere">Noter cette fiche</span>
+                            <span class="description">
+                                Cette fiche vous a t-elle &eacute;t&eacute; utile ?
+                                <a class="stats-click" cp="Notation|Fiche" id-element="{{ fiche.id }}" dsc="1" title="Pas vraiment" onclick="$('#popup').bPopup().close();">Pas vraiment</a>
+                                <a class="stats-click" cp="Notation|Fiche" id-element="{{ fiche.id }}" dsc="2" title="Un peu pour r&eacute;viser mes cours" onclick="$('#popup').bPopup().close();">Un peu pour r&eacute;viser mes cours</a>
+                                <a class="stats-click" cp="Notation|Fiche" id-element="{{ fiche.id }}" dsc="3" title="Pas mal pour pr&eacute;parer mes examens" onclick="$('#popup').bPopup().close();">Pas mal pour pr&eacute;parer mes examens</a>
+                                <a class="stats-click" cp="Notation|Fiche" id-element="{{ fiche.id }}" dsc="4" title="Compl&eacute;tement" onclick="$('#popup').bPopup().close();">Compl&eacute;tement</a>
+                                <a class="stats-click" cp="Notation|Fiche" id-element="{{ fiche.id }}" dsc="5" title="Je ne m'en s&eacute;pare jamais" onclick="$('#popup').bPopup().close();">Je ne m'en s&eacute;pare jamais</a>
+                            </span>
+                    </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block centercontent %}
+	<iframe src="http://docs.google.com/viewer?url={{ url('WelcomebacPublicBundle_fichePdf',{'serie':fiche.matiere.serie, 'matiere':fiche.matiere.url, 'titre':fiche.url }) }}&embedded=true" width="670" height="780" style="border: none;"></iframe>
+  
+  {#
+	<h1>COMMENTAIRES</h1>
+	<hr/>
+	{% for commentaire in commentaires %}
+		{% if commentaire.getVisible %}
+			<p>
+				{{ commentaire.date.format('d-m-Y h:i') }}<br/>
+				{{ commentaire.getCommentaire }}
+			</p>
+			<hr/>
+		{% endif %}
+	{% endfor %}
+  #}
+{% endblock %}

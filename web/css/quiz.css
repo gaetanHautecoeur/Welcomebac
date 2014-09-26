@@ -1,0 +1,65 @@
+div.reponse
+{
+	width					:100%;
+	margin					:20px 0px;
+}
+
+div.solution
+{
+	float					:left;
+	border					:1px solid #ff8400;
+	-moz-border-radius		:3px;
+}
+
+a.suivante
+{
+	display					:block;
+	float					:right;
+	width					:80px;
+	height					:30px;
+	background				:#606060;
+	border					:none;
+	margin					:-25px -1px -1px 0px;
+	cursor					:pointer;
+	line-height				:30px;
+	text-align				:center;
+	color					:#ffffff;
+	font-size				:13px;
+	font-weight				:bold;
+	-moz-border-radius		:3px;
+	text-decoration			:none;
+}
+
+a.suivante:hover
+{
+	background				:#777777;
+}
+
+a.suivante:active
+{
+	background				:#ff8400;
+}
+
+span.resultat
+{
+	display					:block;
+	float					:left;
+	width					:80px;
+	height					:30px;
+	background				:#ff8400;
+	border					:none;
+	margin					:-1px 0px 0px -1px;
+	cursor					:pointer;
+	line-height				:30px;
+	text-align				:center;
+	color					:#ffffff;
+	font-size				:13px;
+	font-weight				:bold;
+	-moz-border-radius		:3px;
+}
+
+div.justification
+{
+	margin					:5px 100px;
+	text-align				:justify;
+}

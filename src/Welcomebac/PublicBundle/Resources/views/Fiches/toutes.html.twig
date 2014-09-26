@@ -1,0 +1,49 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block leftcontent %}
+{% endblock %}
+
+{% block centercontent %}
+	<h1>Les Fiches sur Welcomebac - De nombreuses fiches de qualité rédigées par des professeurs !</h1>
+	<p>
+		Retrouvez de nombreuses fiches des séries scientifiques, économique et sociale, et littéraire sur Welcomebac et profitez de tous ces contenus gratuits !
+	</p>	
+	<ul id="liste">
+		<li>
+			<h1>
+				<a href="#" id="serie_s">
+					S&eacute;rie Scientifique
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresS %}
+				<li><a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>
+			<h1>
+				<a href="#" id="serie_es">
+				S&eacute;rie Economique et Sociale
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresES %}
+				<li><a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>
+			<h1>
+				<a href="#" id="serie_l">
+				S&eacute;rie Littéraire
+				</a>
+			</h1>
+			<ul>
+				{% for matiere in matieresL %}
+				<li><a href="{{ path('WelcomebacPublicBundle_fichesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">{{ matiere.nom }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+{% endblock %}

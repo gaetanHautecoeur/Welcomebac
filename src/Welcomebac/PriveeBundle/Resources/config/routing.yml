@@ -1,0 +1,43 @@
+WelcomebacPriveeBundle_favoris:
+    pattern:  /mes-favoris-sur-welcomebac
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:index }
+
+WelcomebacPriveeBundle_ajouterAnnaleFavori:
+    pattern:  /ajouter-aux-annales-favorites-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:ajouter, type: a }
+
+WelcomebacPriveeBundle_isAnnaleFavori:
+    pattern:  /est-favori-annale-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:est, type: a }
+
+WelcomebacPriveeBundle_ajouterFicheFavori:
+    pattern:  /ajouter-aux-fiches-favorites-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:ajouter, type: f }
+
+WelcomebacPriveeBundle_isFicheFavori:
+    pattern:  /est-favori-fiche-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:est , type: f }
+
+WelcomebacPriveeBundle_ajouterCorrigeFavori:
+    pattern:  /ajouter-aux-corrige-favorites-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:ajouter, type: c }
+
+WelcomebacPriveeBundle_isCorrigeFavori:
+    pattern:  /est-favori-corrige-{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:est, type: c }
+
+WelcomebacPriveeBundle_supprimerFavoriType:
+    pattern:  /supprimer-de-mes-favoris/{id}/{type}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:supprimerType }
+
+WelcomebacPriveeBundle_supprimerFavori:
+    pattern:  /supprimer-de-mes-favoris/{id}
+    defaults: { _controller: WelcomebacPriveeBundle:Favori:supprimer }
+
+WelcomebacPriveeBundle_connexion:
+    pattern:  /me-connecter
+    defaults: { _controller: WelcomebacPriveeBundle:Accueil:connexion }
+
+WelcomebacPriveeBundle_enregistrement:
+    pattern:  /m-enregistrer
+    defaults: { _controller: WelcomebacPriveeBundle:Accueil:enregistrement }

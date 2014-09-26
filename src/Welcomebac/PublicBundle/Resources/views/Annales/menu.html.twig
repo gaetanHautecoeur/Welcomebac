@@ -1,0 +1,18 @@
+{% for matiere in matieres %}
+	<div class="matiere">
+		<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}" class="icone_matiere">
+			<img src="{{ asset('images/matieres/' ~ matiere.nomAbrege ~ '.png') }}" alt="{{ matiere.nom }}">
+		</a>
+		<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}" class="nom_matiere">{{ matiere.nom }}</a>
+		<p class="detail_matiere">
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2012' })}}">2012</a> -
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2011' })}}">2011</a> -
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2010' })}}">2010</a> -
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2009' })}}">2009</a> -
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2008' })}}">2008</a> -
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':matiere.serie, 'matiere':matiere.url, 'annee': '2007' })}}">2007</a><br/>
+			<a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':matiere.serie, 'matiere':matiere.url})}}">Plus...</a>
+		</p>
+	</div>
+{% endfor %}
+<hr class="spacer"/>

@@ -1,0 +1,309 @@
+body
+{
+	width				:100%;
+	height				:100%;
+	margin				:0px;
+	padding				:0px;
+    font-family			:Calibri,Verdana,Arial,Helvetica,sans-serif;
+	font-size			:14px;
+	color				:#606060;
+}
+.hidden{
+	display:none;
+}
+
+h1
+{
+	font-family				:Cambria;
+	font-size				:18px;
+	color					:#606060;
+	margin					:5px 0px;
+}
+
+h2
+{
+	font-family				:Cambria;
+	font-size				:16px;
+	font-weight				:bold;
+	color					:#ff8400;
+}
+
+h3
+{
+	font-family				:Cambria;
+	font-size				:14px;
+	color					:#606060;
+	text-indent				:20px;
+}
+
+p
+{
+	color					:#606060;
+	text-align				:justify;
+	line-height				:20px;
+}
+
+a
+{
+	text-decoration			:none;
+	font-weight				:bold;
+	color					:#ff8400;
+}
+
+a:hover
+{
+	color					:#606060;
+}
+
+a img
+{
+	border					:none;
+}
+
+div#corps
+{
+	width				:1000px;
+	height				:100%;
+	margin				:0px auto;
+	padding				:0px;
+}
+
+div#content
+{
+	width				:100%;
+	height				:100%;
+	margin				:10px 0px;
+	padding				:0px;
+}
+
+/* Contenu d'une page */
+
+div#element
+{
+	margin				:0px 10px 0px 300px;
+	width				:670px;
+	padding 			:0px 25px;
+}
+
+div.networks
+{
+	float				:left;
+	width				:100%;
+	height				:30px;
+	margin				:2px 0px;
+}
+
+div.networks div.fb
+{
+	float				:right;
+	margin				:0px;
+}
+
+div.networks div.go
+{
+	width				:80px;
+	float				:right;
+	margin				:0px;
+}
+
+div.networks span.networks_title
+{
+	display				:block;
+	font-family			:Cambria;
+	font-size			:16px;
+	float				:right;
+	margin-right		:15px;
+}
+div.networks a.favori{
+	cursor:pointer;
+}
+div.networks a.favori, div.networks span.favori
+
+{
+	width				:200px;
+	float				:left;
+	margin				:0px 5px;
+	padding				:0px 0px 0px 25px;
+	background			:url("../images/favori.png") no-repeat left 2px;
+	font-family			:Cambria;
+	font-size			:16px;
+}
+
+/**** Gestion des �l�ments de formulaires ****/
+
+form
+{
+	width					:100%;
+	margin					:0px;
+	padding					:0px;
+}
+
+/** legend : cf ol h2 / ul h2 **/
+span.legend
+{
+	width					:100%;
+	text-align				:justify;
+}
+
+input[type=radio],input[type=checkbox]
+{
+	position				:relative;
+	z-index					:1;
+	width					:10px;
+}
+
+/*label
+{
+	display					:block;
+	position				:relative;
+	min-height				:20px;
+	z-index					:2;
+	padding					:0px;
+	margin					:-20px 0px 0px;
+	cursor					:pointer;
+	text-indent				:30px;
+	text-align				:justify;
+	line-height				:20px;
+	background				:url("../images/radio.png") no-repeat 0px 0px;
+}*/
+
+
+input[type=submit], button
+{
+	width					:80px;
+	height					:30px;
+	background				:#606060;
+	border					:none;
+	margin					:0px 0px 10px;
+	cursor					:pointer;
+	line-height				:30px;
+	color					:#ffffff;
+	font-size				:13px;
+	font-weight				:bold;
+	-moz-border-radius		:3px;
+}
+
+input[type=submit]:hover
+{
+	background-color	:#777777;
+}
+
+input[type=submit]:active
+{
+	background-color	:#ff8400;
+}
+.sorting{
+	cursor:pointer;
+}
+
+
+/****** Page d'accueil ************/
+
+.conteneur_lesplusvus
+{
+	width					:100%;
+	float					:left;
+}
+
+.lesplusvus
+{
+	width					:50%;
+	float					:left;
+}
+
+.lesplusvus_soustitre
+{
+	font-style				:italic;
+	color					:#aaa;
+	font-weight				:normal;
+}
+
+a:hover .lesplusvus_soustitre
+{
+	color					:#606060;
+}
+
+.lesplusvus li
+{
+	margin					:0px 0px 5px;
+}
+
+/****** Page d'accueil ************/
+
+/****** Page de liste ************/
+
+table
+{
+	width					:650px;
+	margin					:10px auto;
+}
+
+thead
+{
+	width					:100%;
+	background-color		:#606060;	
+	color					:#fff;
+}
+
+thead tr:hover
+{
+	background-color		:#606060;	
+}
+
+tr.even
+{
+	background-color		:#fff3d2;
+}
+
+tr:hover
+{
+	background-color		:#ff8400;
+}
+
+tr:hover a, tr:hover .tdconsultation
+{
+	color					:#fff;
+}
+th{
+        cursor                                  :pointer;
+        padding: 3px 25px;
+}
+td, th
+{
+	padding					:3px 25px;
+}
+
+td a
+{
+	display					:block;
+	width					:100%;
+}
+
+.tdlieu, .tdfiche
+{
+	text-align				:left;
+}
+
+td.tdlieu , td.tdfiche
+{
+	text-indent				:10px;
+}
+
+.tdannee a , .tdcorrige a , .tdconsultation
+{
+	text-align				:center;
+	font-weight				:normal;
+	color					:#606060;
+}
+
+th.sorting_asc {
+	background: url('../images/sort_asc.png') no-repeat center right;
+}
+
+th.sorting_desc {
+	background: url('../images/sort_desc.png') no-repeat center right;
+}
+
+th.sorting {
+	background: url('../images/sort_both.png') no-repeat center right;
+}

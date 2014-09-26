@@ -1,0 +1,93 @@
+{% extends 'WelcomebacPublicBundle::layout.html.twig' %}
+
+{% block metas %}
+	<meta content="CorrigÃ© {{ annale.facebookTitle }} - Welcomebac" property='og:title'>
+{% endblock %}
+
+{% block network1 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+	<span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	<script>
+		var href_ajouterFavori = "{{ path('WelcomebacPriveeBundle_ajouterCorrigeFavori',{'id':annale.id}) }}";
+		var href_isFavori = "{{ path('WelcomebacPriveeBundle_isCorrigeFavori',{'id':annale.id}) }}"
+	</script>
+	{{ parent() }}
+{% endblock %}
+{% block network2 %}
+	<a class="favori {{ (favori)?'hidden':'' }}" href="" onClick="return false;">
+		Ajouter &agrave; mes favoris
+	</a>
+        <span class="favori {{ (favori)?'':'hidden' }}">Ajout&eacute; &agrave; mes favoris</span>
+	{{ parent() }}
+{% endblock %}
+
+{% block headTitle %}Corrig&eacute; {{ annale.matiere.nom }} S&eacute;rie {{ annale.matiere.serie }} - {{ annale.lieu }} {{ annale.date }} - Welcomebac - Annales et fiches de cours - Bac S, ES, L - Gratuit{% endblock %}
+
+{% block leftcontent %}
+	<div class="box" itemscope itemtype="http://www.schema.org/ScholarlyArticle">
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="titre" href="{{ path('WelcomebacPublicBundle_annalesToutes') }}" itemprop="url">
+                        <span  itemprop="title" style="display: none;">Annale</span>
+                        Corrig&eacute;
+                    </a>
+                </span>
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a class="matiere" href="{{ path('WelcomebacPublicBundle_annalesSerieMatiere',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url}) }}" itemprop="url">
+                        <span itemprop="title">S&eacute;rie {{ annale.matiere.serie }} - {{ annale.matiere.nom }}</span>
+                    </a>
+		</span>
+                <span class="description">
+                    <span class="titre_description">Description :</span> 
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_annalesSerieMatiereAnnee',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date}) }}" itemprop="url">
+                            <span itemprop="title">{{ annale.date }}</span>
+                        </a>
+                    </span> - 
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                        <a href="{{ path('WelcomebacPublicBundle_annale',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date, 'lieu':annale.lieuUrl}) }}" itemprop="url">
+                            <span itemprop="title">{{ annale.lieu }}</span>
+                        </a>
+                    </span>
+                </span>
+                <span class="consultation notation" onclick="$('#popup').bPopup()" >
+                    {% if note > 0 %}
+                    <span itemprop="aggregateRating"itemscope itemtype="http://schema.org/AggregateRating">
+                      Note des utilisateurs : <span class="note" itemprop="ratingValue">{{ note }}</span> / 5  
+                      (<span itemprop="reviewCount">{{ votes }}</span> votes)
+                    </span>
+                    {% else %}
+                    <div>
+                        <span onclick="$('#popup').bPopup()">Soyez le premier &agrave; laisser votre avis</span>
+                    </div>
+                    {% endif %}
+                </span>
+                <a class="pdf" href="{{ path('WelcomebacPublicBundle_corrigePdf',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'lieu':annale.lieuUrl, 'annee':annale.date }) }}">T&eacute;l&eacute;charger le corrig&eacute;</a>
+		<a href="{{ path('WelcomebacPublicBundle_annale',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'annee':annale.date, 'lieu':annale.lieuUrl}) }}">Voir l'annale</a>
+	</div>
+	{% render 'WelcomebacPublicBundle:Annales:associations' with {'nb': 3, 'id': annale.id, 'type': 'annale' }, {'standalone': true} %}
+                
+        <div id="popup" class="popup">
+            <span class="button bClose"><span>X</span></span>
+            <div class="popin_conteneur">
+                    <div id="popin">
+                            <span class="titre">Note</span>
+                            <span class="matiere">Noter cette fiche</span>
+                            <span class="description">
+                                Ce corrig&eacute; vous semble t-il pertinent ?
+                                <a class="stats-click" cp="Notation|Corrige" id-element="{{ annale.id }}" dsc="1" title="" onclick="$('#popup').bPopup().close();">1</a>
+                                <a class="stats-click" cp="Notation|Corrige" id-element="{{ annale.id }}" dsc="2" title="" onclick="$('#popup').bPopup().close();">2</a>
+                                <a class="stats-click" cp="Notation|Corrige" id-element="{{ annale.id }}" dsc="3" title="" onclick="$('#popup').bPopup().close();">3</a>
+                                <a class="stats-click" cp="Notation|Corrige" id-element="{{ annale.id }}" dsc="4" title="" onclick="$('#popup').bPopup().close();">4</a>
+                                <a class="stats-click" cp="Notation|Corrige" id-element="{{ annale.id }}" dsc="5" title="" onclick="$('#popup').bPopup().close();">5</a>
+                            </span>
+                    </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block centercontent %}	
+	<iframe src="http://docs.google.com/viewer?url={{ url('WelcomebacPublicBundle_corrigePdf',{'serie':annale.matiere.serie, 'matiere':annale.matiere.url, 'lieu':annale.lieuUrl, 'annee':annale.date }) }}&embedded=true" width="670" height="780" style="border: none;"></iframe>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% if associations|length %}
+<div class="box">
+	<span class="titre">Autres</span>
+	<span class="matiere">Ils ont aussi visit&eacute; ...</span>
+	<span class="description">
+		<ul>
+		{% for lien in associations %}
+			<li>{{ lien|raw }}</li>
+		{% endfor %}
+		</ul>
+	</span>
+</div>
+{% endif %}
